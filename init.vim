@@ -1,6 +1,10 @@
 call plug#begin()
 " Make sure you use single quotes
-Plug 'https://github.com/asvetliakov/vim-easymotion.git'
+" if exists('g:vscode')
+    Plug 'https://github.com/asvetliakov/vim-easymotion.git'
+" else
+    " Plug 'easymotion/vim-easymotion'
+" endif
 call plug#end()
 let mapleader = ";"
 " enable autoindents
@@ -54,15 +58,16 @@ noremap @ <Nop>
 noremap q <Nop>
 
 " <Leader>f{char} to move to {char}
-map  <Leader>f <Plug>(easymotion-bd-f)
-map  <Leader>w <Plug>(easymotion-bd-w)
 " nmap <Leader>f <Plug>(easymotion-overwin-f)
 " map <Leader>f <Plug>(easymotion-bd-f)
 " map <Leader>w <Plug>(easymotion-bd-w)
 
 if exists('g:vscode')
+    nmap  <Leader>f <Plug>(easymotion-bd-f)
+    nmap  <Leader>w <Plug>(easymotion-bd-w)
     nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
     nnoremap <C-.> <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
- 
 else
+    nmap <Leader>f <Plug>(easymotion-overwin-f)
+    nmap <Leader>w <Plug>(easymotion-overwin-w)
 endif
