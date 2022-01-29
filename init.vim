@@ -1,12 +1,44 @@
 call plug#begin()
 " Make sure you use single quotes
-" if exists('g:vscode')
-    Plug 'https://github.com/asvetliakov/vim-easymotion.git'
-" else
-    " Plug 'easymotion/vim-easymotion'
-" endif
+
+" EasyMotion
+Plug 'https://github.com/asvetliakov/vim-easymotion.git'
+" Dracula theme
+Plug 'dracula/vim'
+" File Explorer
+Plug 'scrooloose/nerdtree'
+Plug 'ryanoasis/vim-devicons'
+
+" Fuzzy file search
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
 call plug#end()
 let mapleader = ";"
+
+" Set better theming
+if (has("termguicolors"))
+    set termguicolors
+endif
+syntax enable
+colorscheme dracula
+
+" File Explorer in nvim
+let g:NERDTreeShowHidden = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeIgnore = ['node_modules']
+" Automatically close nvim if NERDTree is only thing left open
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+" Toggle File Explorer
+nnoremap <silent> <C-b> :NERDTreeToggle<CR>
+
+" Fuzzy Search
+let g:fzf_action = {
+\    'ctrl-t': 'tab split',
+\   'ctrl-s': 'split',
+\   'ctrl-v': 'vsplit'
+\}
+
 " enable autoindents
 set smartindent
 
@@ -18,9 +50,6 @@ set relativenumber
 
 " enables syntax highlighting
 " syntax on
-
-" Better colors
-" set termguicolors
 
 " number of spaces in a <Tab>
 set tabstop=4
@@ -70,4 +99,7 @@ else
     nnoremap <a-u> <C-u>
     inoremap <a-j> <Esc>
     imap <Leader><leader> <Esc>
+
+    " Fuzzy search
+    nnoremap <C-p> :FZF<CR>
 endif
