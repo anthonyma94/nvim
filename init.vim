@@ -57,7 +57,6 @@ noremap Q <Nop>
 noremap @ <Nop>
 noremap q <Nop>
 
-imap <Leader><leader> <Esc>
 
 if exists('g:vscode')
     nmap  <Leader>f <Plug>(easymotion-bd-f)
@@ -70,5 +69,5 @@ else
     nnoremap <a-d> <C-d>
     nnoremap <a-u> <C-u>
     inoremap <a-j> <Esc>
-
+    imap <Leader><leader> <Esc>
 endif
