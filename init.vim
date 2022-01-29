@@ -57,10 +57,7 @@ noremap Q <Nop>
 noremap @ <Nop>
 noremap q <Nop>
 
-" <Leader>f{char} to move to {char}
-" nmap <Leader>f <Plug>(easymotion-overwin-f)
-" map <Leader>f <Plug>(easymotion-bd-f)
-" map <Leader>w <Plug>(easymotion-bd-w)
+imap <Leader><leader> <Esc>
 
 if exists('g:vscode')
     nmap  <Leader>f <Plug>(easymotion-bd-f)
@@ -70,4 +67,8 @@ if exists('g:vscode')
 else
     nmap <Leader>f <Plug>(easymotion-overwin-f)
     nmap <Leader>w <Plug>(easymotion-overwin-w)
+    nnoremap <a-d> <C-d>
+    nnoremap <a-u> <C-u>
+    inoremap <a-j> <Esc>
+
 endif
