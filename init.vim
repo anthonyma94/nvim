@@ -86,15 +86,18 @@ noremap Q <Nop>
 noremap @ <Nop>
 noremap q <Nop>
 
+map <Leader> <Plug>(easymotion-prefix)
 
 if exists('g:vscode')
-    nmap  <Leader>f <Plug>(easymotion-bd-f)
-    nmap  <Leader>w <Plug>(easymotion-bd-w)
+    " nmap  <Leader>f <Plug>(easymotion-bd-f)
+    " nmap  <Leader>w <Plug>(easymotion-bd-w)
+    " nmap  <Leader>l <Plug>(easymotion-bd-leader)
     nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
     nnoremap <C-.> <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
 else
-    nmap <Leader>f <Plug>(easymotion-overwin-f)
-    nmap <Leader>w <Plug>(easymotion-overwin-w)
+    " nmap <Leader>f <Plug>(easymotion-overwin-f)
+    " nmap <Leader>w <Plug>(easymotion-overwin-w)
+    " nmap <Leader>l <Plug>(easymotion-overwin-l)
     nnoremap <a-d> <C-d>
     nnoremap <a-u> <C-u>
     inoremap <a-j> <Esc>
