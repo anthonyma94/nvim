@@ -17,11 +17,7 @@ call plug#end()
 let mapleader = ";"
 
 " Set better theming
-if (has("termguicolors"))
-    set termguicolors
-endif
 syntax enable
-colorscheme dracula
 
 " File Explorer in nvim
 let g:NERDTreeShowHidden = 1
@@ -99,6 +95,10 @@ if exists('g:vscode')
     nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
     nnoremap <C-.> <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
 else
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+    colorscheme dracula
     nnoremap <a-j> <C-f>
     nnoremap <a-k> <C-b>
     nnoremap <a-d> <C-d>
