@@ -13,6 +13,9 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" Surround parentheses
+Plug 'https://github.com/tpope/vim-surround.git'
+
 call plug#end()
 let mapleader = ";"
 
@@ -90,6 +93,7 @@ nmap <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>W <Plug>(easymotion-bd-w)
 nmap <Leader>e <Plug>(easymotion-bd-e)
 nmap <Leader>E <Plug>(easymotion-bd-E)
+nmap <Leader>f <Plug>(easymotion-bd-f)
 
 if exists('g:vscode')
     nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
