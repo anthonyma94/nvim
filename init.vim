@@ -1,8 +1,14 @@
+function! Cond(Cond, ...)
+  let opts = get(a:000, 0, {})
+  return a:Cond ? opts : extend(opts, { 'on': [], 'for': [] })
+endfunction
+
 call plug#begin()
 " Make sure you use single quotes
 
 " EasyMotion
-Plug 'https://github.com/asvetliakov/vim-easymotion.git'
+Plug 'easymotion/vim-easymotion', Cond(!exists('g:vscode'))
+Plug 'https://github.com/asvetliakov/vim-easymotion.git', Cond(exists('g:vscode'), { 'as': 'vsc-easymotion' })
 " Dracula theme
 Plug 'dracula/vim'
 " File Explorer
@@ -86,14 +92,23 @@ noremap @ <Nop>
 noremap q <Nop>
 
 map <Leader> <Plug>(easymotion-prefix)
-nmap <Leader><Leader> <Plug>(easymotion-jumptoanywhere)
-nmap <Leader>b <Plug>(easymotion-bd-w)
-nmap <Leader>B <Plug>(easymotion-bd-W)
-nmap <Leader>w <Plug>(easymotion-bd-w)
-nmap <Leader>W <Plug>(easymotion-bd-w)
-nmap <Leader>e <Plug>(easymotion-bd-e)
-nmap <Leader>E <Plug>(easymotion-bd-E)
-nmap <Leader>f <Plug>(easymotion-bd-f)
+map <Leader><Leader> <Plug>(easymotion-jumptoanywhere)
+map <Leader>b <Plug>(easymotion-bd-w)
+map <Leader>B <Plug>(easymotion-bd-W)
+map <Leader>w <Plug>(easymotion-bd-w)
+map <Leader>W <Plug>(easymotion-bd-w)
+map <Leader>e <Plug>(easymotion-bd-e)
+map <Leader>E <Plug>(easymotion-bd-E)
+map <Leader>f <Plug>(easymotion-bd-f)
+imap <Leader><Leader> <Nop>
+imap <Leader>b <Nop>
+imap <Leader>B <Nop>
+imap <Leader>w <Nop>
+imap <Leader>W <Nop>
+imap <Leader>e <Nop>
+imap <Leader>E <Nop>
+imap <Leader>f <Nop>
+
 
 if exists('g:vscode')
     nnoremap z= <Cmd>call VSCodeNotify('keyboard-quickfix.openQuickFix')</CR>
@@ -103,11 +118,11 @@ else
         set termguicolors
     endif
     colorscheme dracula
-    nnoremap <a-j> <C-f>
+    nmap <a-j> <C-f>
     nnoremap <a-k> <C-b>
     nnoremap <a-d> <C-d>
     nnoremap <a-u> <C-u>
-    inoremap <a-j> <Esc>
+    imap <a-j> <Esc>
     imap <Leader><leader> <Esc>
 
     " Fuzzy search
