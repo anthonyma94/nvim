@@ -8,3 +8,5 @@ sudo mv nvim-linux64 /opt/nvim
 sudo ln -s /opt/nvim/bin/nvim /usr/local/bin/nvim
 cd ../
 rm -rf tmp
+
+sudo apt install -y xclip # needed to make clipboard work
