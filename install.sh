@@ -1,6 +1,7 @@
 #!/bin/bash
 
 if ! command -v nvim; then
+	sudo apt install -y gcc g++
 	mkdir tmp
 	cd tmp
 	wget https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz
