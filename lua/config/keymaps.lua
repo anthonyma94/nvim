@@ -13,7 +13,7 @@ vim.keymap.set("n", "<A-d>", "<C-d>")
 
 -- Sets terminal toggling
 local lazyterm = function()
-  Util.terminal.open(nil, { cwd = Util.root.get() })
+  Snacks.terminal.open(nil, { cwd = Util.root.get() })
 end
 vim.keymap.set("n", "<A-(>", lazyterm)
 vim.keymap.set("t", "<A-(>", "<cmd>close<cr>")

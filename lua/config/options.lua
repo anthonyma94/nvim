@@ -4,4 +4,6 @@
 --
 --
 
-vim.api.nvim_set_option("clipboard", "unnamed")
+local opt = vim.opt
+
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus"
